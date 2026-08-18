@@ -1,0 +1,6 @@
+.env
+receipts/out/*
+!receipts/out/.gitkeep
+__pycache__/
+*.pyc
+.DS_Store
