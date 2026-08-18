@@ -41,6 +41,35 @@ python3 -m surfaces.telegram_bot     # Telegram bot
 python3 -m surfaces.desk_mic         # push-to-talk voice loop
 ```
 
+### Running the Telegram bot persistently
+
+A long-polling bot needs to stay running to be useful — templates for
+both are in `deploy/`:
+
+**Linux (systemd user service)**
+```bash
+which claude   # note the directory — you may need it below
+cp deploy/systemd/unified-brain-telegram.service ~/.config/systemd/user/
+# edit the copied file: add claude's directory to the PATH= line if it's
+# not already covered, and fix WorkingDirectory if the repo isn't ~/General
+systemctl --user daemon-reload
+systemctl --user enable --now unified-brain-telegram.service
+loginctl enable-linger "$USER"   # keeps it running after you log out
+journalctl --user -u unified-brain-telegram -f   # tail logs
+```
+
+**macOS (launchd)**
+```bash
+which python3   # and which claude
+cp deploy/launchd/com.unifiedbrain.telegram.plist ~/Library/LaunchAgents/
+# edit the copied file: fill in your username/repo path and python3 path
+launchctl load ~/Library/LaunchAgents/com.unifiedbrain.telegram.plist
+tail -f ~/General/telegram_bot.log
+```
+
+Both templates have `# EDIT` comments marking what to fill in for your
+machine before installing.
+
 ## Placing an outbound call
 
 ```bash

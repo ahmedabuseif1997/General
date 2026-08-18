@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.unifiedbrain.telegram</string>
+
+    <!-- EDIT: replace /usr/bin/python3 with your `which python3` if you
+         use Homebrew/pyenv, and /Users/YOUR_USERNAME/General with the
+         actual path where you cloned the repo. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>-m</string>
+        <string>surfaces.telegram_bot</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/YOUR_USERNAME/General</string>
+
+    <!-- EDIT: add wherever `which claude` points (its directory) if it's
+         not already covered here. -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/YOUR_USERNAME/General/telegram_bot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOUR_USERNAME/General/telegram_bot.log</string>
+</dict>
+</plist>

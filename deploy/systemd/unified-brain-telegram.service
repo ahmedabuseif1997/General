@@ -1,0 +1,20 @@
+[Unit]
+Description=unified-brain Telegram surface
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/General
+# systemd user services start with a minimal PATH. If `claude` lives
+# somewhere not already on it (npm global installs, nvm, etc.), add its
+# directory here — find it with `which claude` and edit the line below.
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:%h/.npm-global/bin:%h/.local/bin
+ExecStart=/usr/bin/python3 -m surfaces.telegram_bot
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:%h/General/telegram_bot.log
+StandardError=append:%h/General/telegram_bot.log
+
+[Install]
+WantedBy=default.target
