@@ -16,11 +16,14 @@ surface a request came in on.
   `EMAIL_APP_PASSWORD` in `.env`.
 - **Outbound calls**: `python3 -m calls.runner <script> --contact "..." --number "..." --context "..."`
   Scripts: `invoice_chase`, `appointment_booking`, `price_inquiry`,
-  `reservation` (defined in `calls/scripts/`). The phone line is a stub
-  by default (`PHONE_ADAPTER=stub` in `.env`) — it prompts at the
-  keyboard for the other side's replies, so the whole pipeline can be
-  exercised without a real telephony account. Swapping in a real line
-  later (Twilio etc.) only touches `surfaces/phone/`.
+  `reservation` (defined in `calls/scripts/`). `PHONE_ADAPTER` in
+  `.env` picks the line: `stub` (default) prompts at the keyboard for
+  the other side's replies, so the whole pipeline can be exercised
+  without a telephony account; `twilio` places real outbound calls via
+  Twilio Programmable Voice (needs `TWILIO_ACCOUNT_SID` /
+  `TWILIO_AUTH_TOKEN` / `TWILIO_FROM_NUMBER` / `TWILIO_WEBHOOK_BASE_URL`
+  in `.env` — see README). Either way `calls/runner.py` and the scripts
+  are unchanged.
 - **Receipts**: every call produces an outcome note in `vault/calls/`,
   and — depending on the script — an invoice PDF and/or a `.ics`
   calendar entry in `receipts/out/`. `brain/receipts.py` pushes all of
