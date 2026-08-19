@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeverEnding.Kicks — 2026 Running Collection</title>
+<meta name="description" content="NeverEnding.Kicks — a concept showcase of the 2026 running shoe lineup across 12 brands, 20 models, every colorway.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor" id="cursor"></div>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__word">NEVERENDING<span>.</span>KICKS</div>
+  <div class="preloader__count" id="preloadCount">0</div>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo">NEVERENDING<span>.</span>KICKS</a>
+  <nav class="nav__links">
+    <a href="#collection" data-hover>Collection</a>
+    <a href="#brands" data-hover>Brands</a>
+    <a href="#manifesto" data-hover>Manifesto</a>
+    <a href="#drop" data-hover>Drop</a>
+  </nav>
+  <button class="nav__bag" id="bagBtn" data-hover>
+    <span>Bag</span><em id="bagCount">0</em>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <p class="hero__eyebrow reveal">2026 RUNNING COLLECTION — 20 MODELS / 12 BRANDS</p>
+    <h1 class="hero__title">
+      <span class="line" data-speed="0.4">NEVER</span>
+      <span class="line" data-speed="0.7">ENDING</span>
+      <span class="line" data-speed="1">KICKS</span>
+    </h1>
+    <p class="hero__sub reveal">Every road. Every pace. Every colorway there is.<br>One rail of the fastest running shoes landing in 2026.</p>
+    <a href="#collection" class="hero__scroll" data-hover>
+      <span>Scroll</span>
+      <i></i>
+    </a>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack"></div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <p class="manifesto__text">
+      <span class="reveal-word">Kicks</span>
+      <span class="reveal-word">don't</span>
+      <span class="reveal-word">stop</span>
+      <span class="reveal-word">at</span>
+      <span class="reveal-word">the</span>
+      <span class="reveal-word">finish</span>
+      <span class="reveal-word">line.</span>
+      <span class="reveal-word dim">We</span>
+      <span class="reveal-word dim">chase</span>
+      <span class="reveal-word dim">every</span>
+      <span class="reveal-word dim">brand,</span>
+      <span class="reveal-word dim">every</span>
+      <span class="reveal-word dim">drop,</span>
+      <span class="reveal-word dim">every</span>
+      <span class="reveal-word dim">colorway</span>
+      <span class="reveal-word dim">—</span>
+      <span class="reveal-word dim">neverending.</span>
+    </p>
+    <div class="manifesto__stats">
+      <div class="stat"><span class="stat__num" data-count="20">0</span><span class="stat__label">Models</span></div>
+      <div class="stat"><span class="stat__num" data-count="12">0</span><span class="stat__label">Brands</span></div>
+      <div class="stat"><span class="stat__num" data-count="48">0</span><span class="stat__label">Colorways</span></div>
+      <div class="stat"><span class="stat__num" data-count="2026">0</span><span class="stat__label">Lineup Year</span></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PINNED SCROLLER -->
+  <section class="featured" id="drop">
+    <div class="featured__sticky">
+      <p class="featured__kicker reveal">FEATURED RACE DAY</p>
+      <div class="featured__track" id="featuredTrack"></div>
+      <div class="featured__progress"><span id="featuredProgress"></span></div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section class="collection" id="collection">
+    <div class="collection__head">
+      <h2 class="reveal">The Full Rail</h2>
+      <p class="reveal">20 running shoes. Every color they come in. Hover a row, watch it change.</p>
+    </div>
+    <div class="collection__body">
+      <ol class="collection__list" id="collectionList"></ol>
+      <div class="collection__preview" id="collectionPreview">
+        <div class="preview__shoe" id="previewShoeWrap"></div>
+        <div class="preview__meta">
+          <p class="preview__brand" id="previewBrand">Nike</p>
+          <p class="preview__model" id="previewModel">Pegasus 42</p>
+          <div class="preview__specs">
+            <span id="previewCat">Daily Trainer</span>
+            <span id="previewWeight">284g</span>
+            <span id="previewDrop">10mm drop</span>
+          </div>
+          <p class="preview__price" id="previewPrice">$140</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="brands" id="brands">
+    <h2 class="reveal">Every lane, every label</h2>
+    <div class="brands__grid" id="brandsGrid"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="cta__title">
+      <span class="line">GET NOTIFIED</span>
+      <span class="line">ON THE NEXT</span>
+      <span class="line">DROP.</span>
+    </h2>
+    <form class="cta__form" id="ctaForm">
+      <input type="email" placeholder="you@email.com" required data-hover>
+      <button type="submit" data-hover>Notify Me</button>
+    </form>
+    <p class="cta__note" id="ctaNote">No spam. One email when the 2026 rail goes live.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <span class="footer__logo">NEVERENDING<span>.</span>KICKS</span>
+    <div class="footer__cols">
+      <div>
+        <h4>Shop</h4>
+        <a href="#collection" data-hover>Collection</a>
+        <a href="#brands" data-hover>Brands</a>
+        <a href="#drop" data-hover>Featured</a>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <a href="#manifesto" data-hover>Manifesto</a>
+        <a href="#" data-hover>Shipping</a>
+        <a href="#" data-hover>Returns</a>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="#" data-hover>Instagram</a>
+        <a href="#" data-hover>Strava</a>
+        <a href="#" data-hover>TikTok</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>© 2026 NeverEnding.Kicks. Concept showcase — brand names and 2026 model numbers are illustrative, not official releases.</p>
+  </div>
+</footer>
+
+<script src="js/shoes.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
