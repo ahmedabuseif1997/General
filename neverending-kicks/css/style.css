@@ -150,7 +150,8 @@ img, svg { display: block; max-width: 100%; }
 .featured__kicker { position: absolute; top: 6rem; left: clamp(1.2rem, 4vw, 3rem); font-size: .78rem; letter-spacing: .18em; color: var(--fg-dim); z-index: 2; }
 .featured__track { display: flex; gap: 4vw; padding: 0 8vw; will-change: transform; }
 .featured__card { flex: 0 0 min(78vw, 620px); border: 1px solid var(--line); border-radius: 22px; padding: 2.4rem; background: linear-gradient(160deg, rgba(255,255,255,.03), transparent); display: flex; flex-direction: column; }
-.featured__card .shoe-svg { width: 100%; height: auto; margin: 1rem 0 1.6rem; }
+.featured__card .tilt-wrap { display: block; margin: 1rem 0 1.6rem; }
+.featured__card .shoe-svg, .featured__card .shoe-photo { width: 100%; height: auto; }
 .featured__card h3 { font-family: 'Archivo Black', sans-serif; font-size: clamp(1.4rem, 2.6vw, 2rem); letter-spacing: -0.01em; }
 .featured__card p.brand { color: var(--fg-dim); font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .3rem; }
 .featured__card .row { display: flex; justify-content: space-between; margin-top: auto; padding-top: 1.4rem; border-top: 1px solid var(--line); font-size: .85rem; color: var(--fg-dim); }
@@ -181,7 +182,7 @@ img, svg { display: block; max-width: 100%; }
 
 .collection__preview { position: sticky; top: 6rem; border: 1px solid var(--line); border-radius: 24px; padding: 2.2rem; background: var(--bg-2); }
 .preview__shoe { padding: 1rem 0 1.6rem; }
-.preview__shoe .shoe-svg { width: 100%; height: auto; transition: transform .3s var(--ease); }
+.preview__shoe .shoe-svg, .preview__shoe .shoe-photo { width: 100%; height: auto; }
 .preview__brand { color: var(--fg-dim); text-transform: uppercase; font-size: .78rem; letter-spacing: .1em; }
 .preview__model { font-family: 'Archivo Black', sans-serif; font-size: clamp(1.3rem, 2.4vw, 1.8rem); margin-top: .2rem; }
 .preview__specs { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
@@ -195,8 +196,19 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* shoe svg */
-.shoe-svg { overflow: visible; }
+.shoe-svg { overflow: visible; transition: opacity .35s var(--ease); }
 .shoe-svg path, .shoe-svg g { transition: fill .3s var(--ease); }
+
+/* real product photos */
+.shoe-photo {
+  width: 100%; height: auto; display: block; border-radius: 18px;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,.55));
+  transition: opacity .35s var(--ease);
+}
+
+/* 3D tilt-on-hover, wraps either a photo or the SVG art */
+.tilt-wrap { perspective: 900px; }
+.tilt-el { transform-style: preserve-3d; transition: transform .25s var(--ease); will-change: transform; }
 
 /* ---------- brands ---------- */
 

@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeaturedScroller();
   initHeroParallax();
   initCartAndForm();
+  initTilt();
 });
 
 /* ---------- data helpers ---------- */
@@ -53,6 +54,42 @@ function shoeSVG(colors, extraClass) {
     </g>
     <path fill="rgba(255,255,255,.16)" d="M90,120 C150,102 230,108 300,86 L326,98 C250,132 170,140 92,138 Z"/>
   </svg>`;
+}
+
+/* Renders a shoe's real product photo when we have one, falling back to the
+   hand-drawn SVG otherwise — both wrapped for the 3D tilt effect. */
+function productMedia(shoe, extraClass) {
+  const inner = shoe.photo
+    ? `<img src="${shoe.photo}" alt="${shoe.brand} ${shoe.model}" class="shoe-photo ${extraClass || ''}" loading="lazy">`
+    : shoeSVG(shoe.colors, extraClass);
+  return `<div class="tilt-wrap"><div class="tilt-el">${inner}</div></div>`;
+}
+
+/* ---------- 3D tilt-on-hover ---------- */
+
+function initTilt() {
+  const MAX_DEG = 10;
+  let activeEl = null;
+
+  document.addEventListener('mousemove', (e) => {
+    const wrap = e.target.closest ? e.target.closest('.tilt-wrap') : null;
+    const el = wrap ? wrap.querySelector('.tilt-el') : null;
+    if (!el) {
+      if (activeEl) { activeEl.style.transform = ''; activeEl = null; }
+      return;
+    }
+    activeEl = el;
+    const r = wrap.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    const rotY = (px - 0.5) * MAX_DEG * 2;
+    const rotX = (0.5 - py) * MAX_DEG * 2;
+    el.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.04)`;
+  });
+
+  document.addEventListener('mouseleave', (e) => {
+    if (activeEl) { activeEl.style.transform = ''; activeEl = null; }
+  }, true);
 }
 
 /* ---------- preloader ---------- */
@@ -239,10 +276,10 @@ function updatePreview(shoe) {
   document.getElementById('previewDrop').textContent = shoe.drop + 'mm drop';
   document.getElementById('previewPrice').textContent = fmtPrice(shoe.price);
   const wrap = document.getElementById('previewShoeWrap');
-  wrap.innerHTML = shoeSVG(shoe.colors);
-  const svg = wrap.querySelector('svg');
-  svg.style.transform = 'scale(0.96)';
-  requestAnimationFrame(() => { svg.style.transform = 'scale(1)'; });
+  wrap.innerHTML = productMedia(shoe);
+  const media = wrap.querySelector('.shoe-svg, .shoe-photo');
+  media.style.opacity = '0';
+  requestAnimationFrame(() => { media.style.opacity = '1'; });
 }
 
 /* ---------- featured pinned horizontal scroller ---------- */
@@ -255,7 +292,7 @@ function buildFeatured() {
     <article class="featured__card">
       <p class="brand">${s.brand}</p>
       <h3>${s.model}</h3>
-      ${shoeSVG(s.colors)}
+      ${productMedia(s)}
       <div class="row">
         <span>${s.weight}g / ${s.drop}mm drop</span>
         <span class="price">${fmtPrice(s.price)}</span>
