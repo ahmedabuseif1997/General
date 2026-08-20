@@ -1,0 +1,19 @@
+# ملفات Unity المتولدة أوتوماتيك — متتعملهاش commit
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+/[Uu]serSettings/
+*.csproj
+*.sln
+*.userprefs
+.vs/
+.idea/
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+crashlytics-build.properties
