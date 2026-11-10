@@ -20,7 +20,7 @@ pack), client software and websites, hosting/SaaS.
 | # | Code | Activity | Type | Why |
 |---|------|----------|------|-----|
 | 1 | 722901 | Software House | Services | Core: design/build software incl. smartphone apps |
-| 2 | RAKEZ/2017/56 | Computer Systems and Software Designing | Services | Software design (was listed twice; keep once) |
+| 2 | 724003 | Portal | E-Commerce | User WILL build a buyer–seller marketplace (confirmed 2026-11-10); commission/brokerage only |
 | 3 | RAKEZ/2017/61 | Network Websites Designing | Services | Websites / web apps |
 | 4 | 721003 | Information Technology Consultants | Services | Consulting (cannot produce/market software alone) |
 | 5 | RAKEZ/2017/59 | Computer System Housing Services | Services | Hosting / SaaS for clients |
@@ -31,8 +31,13 @@ pack), client software and websites, hosting/SaaS.
 | 10 | TBC (ask RAKEZ) | Artificial intelligence (software/consultancy) | — | AI products; helps with banking/contracts |
 
 Dropped: RAKEZ9001023 IT Management (outsourced remote support) and
-724003 Portal (brokerage-only marketplace). Swap either back in for #9 or
-#10 if remote support contracts or a marketplace become a plan.
+RAKEZ/2017/56 Computer Systems and Software Designing (overlaps 722901
+Software House, which covers design, implementation, operation and
+maintenance). Portal re-added because the marketplace is planned.
+
+Marketplace payments: if the platform collects buyers' money and pays
+sellers, use a licensed payment provider with split payouts — holding
+others' funds is a regulated payment activity (CBUAE). Confirm with RAKEZ.
 
 Note: no real-money gambling / cash-prize mechanics in games — not covered
 and tightly regulated in the UAE.
